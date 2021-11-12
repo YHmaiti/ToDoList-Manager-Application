@@ -21,13 +21,13 @@ class HelloController{
     'announce the proper FXML components of the HelloToDoList manager app by Yohan
     list1: ToDoListCode
     - desColumn: TableColumn<Item, String>
-    - DateColumn: TableColumn<Item, LocalDate>
+    - dueDateColumn: TableColumn<Item, LocalDate>
     - statusColumn: TableColumn<Item, CheckBox>
     - fLabel: Label
     - tableView: TableView<Item>
     - desTextField: TextField
     - fBox: VBox
-    - displayOpt: ComboBox<String>
+    - displayOptionsBox: ComboBox<String>
     - DatePicker: DatePicker
 
     'announce the overridden method initialize
@@ -62,7 +62,7 @@ class ToDoListCode{
     +addItem(Item currentItem)
     +deleteItem(Item currentItem))
     +clearAll()
-    +checkExists(String ItemDes): Boolean
+    +checkExist(String ItemDes): Boolean
     +formatDate(String currDate): LocalDate
     +editPriorItem(Item item, String updatedDescription, LocalDate updatedDueDate)
     +getItemsAsAWhole(): ArrayList<Item>
@@ -92,13 +92,13 @@ class Item{
     'variables proper to the class (instances)
     -check: CheckBox
     -description: SimpleStringProperty
-    -dueD: LocalDate
+    -dueDate: LocalDate
     'show the multiple setters, getters and constructor of the Item class
-    +Item(String description, LocalDate userSetDueTime)
-    +setDescription(String desc)
-    +setDate(LocalDate userSetTime)
+    +Item(String description, LocalDate dueDate)
+    +setDescription(String description)
+    +setDueDate(LocalDate dueDate)
     +setStatus(CheckBox status)
-    +getDate(): LocalDate
+    +getDueDate(): LocalDate
     +getDescription(): String
     +getStatus(): CheckBox
 
