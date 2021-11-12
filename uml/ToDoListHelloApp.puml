@@ -1,0 +1,111 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 Yohan Hmaiti
+ */
+
+@startuml
+note "Will trigger the load of hello-view.fxml" as mainService
+note "Will trigger the load of HelpMenu.fxml" as HelperService
+note "GUI for the HelloToDoList by Yohan" as GUI
+
+HelloApplication -- HelloController
+HelloController *--> HelpMenuController
+javafx.application.Application <|- HelloApplication
+HelloController *-> ToDoListCode
+ToDoListCode *--> Item
+
+class HelloController{
+    'these will be changed later as the name of the variables wasn't chosen yet
+    list2: ObservableList<Item>
+    fileChooser: FileChooser
+    'announce the proper FXML components of the HelloToDoList manager app by Yohan
+    list1: ToDoListCode
+    - desColumn: TableColumn<Item, String>
+    - DateColumn: TableColumn<Item, LocalDate>
+    - statusColumn: TableColumn<Item, CheckBox>
+    - fLabel: Label
+    - tableView: TableView<Item>
+    - desTextField: TextField
+    - fBox: VBox
+    - displayOpt: ComboBox<String>
+    - DatePicker: DatePicker
+
+    'announce the overridden method initialize
+    +initialize(URL location, ResourceBundle resources)
+
+    'Remaining Methods
+    +displayOpt(ActionEvent e)
+    +sortByDate()
+    +displayAll()
+    +displayIncomplete()
+    +displayComplete()
+    +saveWorkBtnFunction(ActionEvent e)
+    +loadWorkBtnFunction(ActionEvent e)
+    +selectionOfRowByUser()
+    +fieldClearing()
+    +clearAllTriggered(ActionEvent e)
+    +displayCurrentItem(Item currItem)
+    +editItemBtn(ActionEvent e)
+    +deleteSelectedItem(ActionEvent e)
+    +helpMenuNeed(ActionEvent e)
+    +addItemBtn(ActionEvent e)
+
+}
+
+class ToDoListCode{
+
+    'constructor
+    +ToDoListCode()
+    'reflect the private array list instance of type Item
+    -itemsList: ArrayList<Item>
+    'Methods
+    +addItem(Item currentItem)
+    +deleteItem(Item currentItem))
+    +clearAll()
+    +checkExists(String ItemDes): Boolean
+    +formatDate(String currDate): LocalDate
+    +editPriorItem(Item item, String updatedDescription, LocalDate updatedDueDate)
+    +getItemsAsAWhole(): ArrayList<Item>
+    +inCompleteElements(): ArrayList<Item>
+    +completedElements(): ArrayList<Item>
+    +saveToDirectory(File fileDir)
+    +loadToDoList(File fileDir): ArrayList<Item>
+
+}
+
+class HelloApplication{
+
+    +main(String[] args)
+    +start(Stage stage)
+
+}
+
+class HelpMenuController{
+
+    -closeBtn: Button
+    +closeBtnHelpMenu(ActionEvent e)
+
+}
+
+class Item{
+
+    'variables proper to the class (instances)
+    -check: CheckBox
+    -description: SimpleStringProperty
+    -dueD: LocalDate
+    'show the multiple setters, getters and constructor of the Item class
+    +Item(String description, LocalDate userSetDueTime)
+    +setDescription(String desc)
+    +setDate(LocalDate userSetTime)
+    +setStatus(CheckBox status)
+    +getDate(): LocalDate
+    +getDescription(): String
+    +getStatus(): CheckBox
+
+}
+
+javafx.application.Application.GUI
+HelpMenuController . HelperService
+HelloController . mainService
+HelloController . HelperService
+@enduml

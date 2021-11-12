@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="16" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Hmaiti-COP3330-Assignment4.main" options="--add-exports javafx.swing/com.sun.javafx.embed.swing=ucf.assignments" />
+    </option>
+  </component>
+</project>
