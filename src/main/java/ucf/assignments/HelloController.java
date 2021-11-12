@@ -97,7 +97,11 @@ public class HelloController implements Initializable{
 
         // set a default directory at the beginning...
         fileChooser.setInitialDirectory(newDir);
-
+        
+        // disable the user fromentering a string as date
+        DatePicker.getEditor().setDisable(true);
+        DatePicker.getEditor().setOpacity(1);
+        
         // convert the format of the Due date to yyyy-mm-dd as requested by the assignment
         // using a setConverter and a DateTimeFormatter along with two methods to change the date from a String and
         // to a String, the methods will use the .format() and the .parse() approaches
